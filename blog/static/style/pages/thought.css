@@ -1,0 +1,14 @@
+.main-page-left {
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+.main-page-right {
+  margin-left: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+.main-page {
+  margin-top: 0.5rem;
+}
