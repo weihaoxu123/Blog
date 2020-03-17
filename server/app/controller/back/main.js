@@ -1,5 +1,5 @@
 const Controller = require("egg").Controller;
-
+const JWT = require("jsonwebtoken");
 class MainController extends Controller {
   async index() {
     //首页的文章列表数据
@@ -15,12 +15,26 @@ class MainController extends Controller {
       password +
       "'";
 
+    console.log(this.config.adminauth.secret, userName);
+
     const res = await this.app.mysql.query(sql);
     if (res.length > 0) {
       //登录成功,进行session缓存
+      const token = JWT.sign(
+        {
+          userName: userName
+        },
+        this.config.adminauth.secret,
+        {
+          expiresIn: 1 * 60
+        }
+      );
+      const data = { data: "登录成功", token: token };
+      console.log(data.token);
+
       let openId = new Date().getTime();
       this.ctx.session.openId = { openId: openId };
-      this.ctx.body = { data: "登录成功", openId: openId };
+      this.ctx.body = data;
     } else {
       this.ctx.body = { data: "登录失败" };
     }

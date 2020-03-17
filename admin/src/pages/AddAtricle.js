@@ -9,6 +9,7 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 function AddArticle(props) {
+  const token = localStorage.getItem("token");
   marked.setOptions({
     renderer: new marked.Renderer(),
     gfm: true,
@@ -47,8 +48,9 @@ function AddArticle(props) {
     axios({
       method: "get",
       url: servicePath.getTypeInfo,
-      header: { "Access-Control-Allow-Origin": "*" },
-      withCredentials: true
+      headers: {
+        Authorization: `${token}`
+      }
     }).then(res => {
       if (res.data.data == "没有登录") {
         localStorage.removeItem("openId");
@@ -95,7 +97,9 @@ function AddArticle(props) {
         method: "post",
         url: servicePath.addArticle,
         data: dataProps,
-        withCredentials: true
+        headers: {
+          Authorization: `${token}`
+        }
       }).then(res => {
         setArticleId(res.data.insertId);
         if (res.data.isScuccess) {
@@ -110,9 +114,10 @@ function AddArticle(props) {
       axios({
         method: "post",
         url: servicePath.updateArticle,
-        header: { "Access-Control-Allow-Origin": "*" },
-        data: dataProps,
-        withCredentials: true
+        headers: {
+          Authorization: `${token}`
+        },
+        data: dataProps
       }).then(res => {
         if (res.data.isScuccess) {
           message.success("文章保存成功");
@@ -124,8 +129,9 @@ function AddArticle(props) {
   };
   const getArticleById = id => {
     axios(servicePath.getArticleById + id, {
-      withCredentials: true,
-      header: { "Access-Control-Allow-Origin": "*" }
+      headers: {
+        Authorization: `${token}`
+      }
     }).then(res => {
       //let articleInfo= res.data.data[0]
       setArticleTitle(res.data.data[0].title);

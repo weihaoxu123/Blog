@@ -8,12 +8,15 @@ const { confirm } = Modal;
 
 function ArticleList(props) {
   const [list, setList] = useState([]);
+  const token = localStorage.getItem("token");
   const getList = () => {
+    console.log(localStorage.getItem("token"));
     axios({
       method: "get",
       url: servicePath.getArticleList,
-      withCredentials: true,
-      header: { "Access-Control-Allow-Origin": "http://localhost:3000" }
+      headers: {
+        Authorization: `${token}`
+      }
     }).then(res => {
       setList(res.data.list);
     });
@@ -26,12 +29,14 @@ function ArticleList(props) {
       title: "确定要删除这篇博客文章吗?",
       content: "如果你点击OK按钮，文章将会永远被删除，无法恢复。",
       onOk() {
-        axios(servicePath.delArticle + id, { withCredentials: true }).then(
-          res => {
-            message.success("文章删除成功");
-            getList();
+        axios(servicePath.delArticle + id, {
+          headers: {
+            Authorization: `${token}`
           }
-        );
+        }).then(res => {
+          message.success("文章删除成功");
+          getList();
+        });
       },
       onCancel() {
         message.success("没有任何改变");

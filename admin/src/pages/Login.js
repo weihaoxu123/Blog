@@ -32,11 +32,13 @@ const Login = props => {
       method: "post",
       url: servicePath.checkLogin,
       data: dataProps,
-      withCredentials: true
+      withCredentials: false
     }).then(res => {
       setIsLoading(false);
       if (res.data.data == "登录成功") {
-        localStorage.setItem("openId", res.data.openId);
+        console.log(res.data.token);
+
+        localStorage.setItem("token", res.data.token);
         props.history.push("/index");
       } else {
         message.error("用户名密码错误");
