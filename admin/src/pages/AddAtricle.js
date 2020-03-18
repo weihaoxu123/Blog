@@ -62,6 +62,8 @@ function AddArticle(props) {
     });
   };
   const selectTypeHandler = value => {
+    console.log(value);
+
     setSelectType(value);
   };
   const saveArticle = () => {
@@ -184,7 +186,7 @@ function AddArticle(props) {
               >
                 {typeInfo.map((item, index) => {
                   return (
-                    <Option key={index} value={item.Id}>
+                    <Option key={index} value={item.id}>
                       {item.typeName}
                     </Option>
                   );

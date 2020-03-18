@@ -26,7 +26,7 @@ class MainController extends Controller {
         },
         this.config.adminauth.secret,
         {
-          expiresIn: 1 * 60
+          expiresIn: 60 * 60
         }
       );
       const data = { data: "登录成功", token: token };
