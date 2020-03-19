@@ -27,7 +27,6 @@ const Login = props => {
       userName: userName,
       password: password
     };
-    console.log("check");
     axios({
       method: "post",
       url: servicePath.checkLogin,
@@ -36,10 +35,17 @@ const Login = props => {
     }).then(res => {
       setIsLoading(false);
       if (res.data.data == "登录成功") {
-        console.log(res.data.token);
-
         localStorage.setItem("token", res.data.token);
-        props.history.push("/index");
+        if (
+          localStorage.getItem("draft") == "true" &&
+          localStorage.getItem("id") > 0
+        ) {
+          //still editing
+          props.history.push("/index/add/" + localStorage.getItem("id"));
+        } else {
+          //new post
+          props.history.push("/index");
+        }
       } else {
         message.error("用户名密码错误");
       }
