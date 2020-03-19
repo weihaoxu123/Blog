@@ -32,8 +32,6 @@ function AddArticle(props) {
   const [typeInfo, setTypeInfo] = useState([]); // 文章类别信息
   const [selectedType, setSelectType] = useState(1);
   const changeContent = e => {
-    console.log("hello");
-
     setArticleContent(e.target.value);
     let html = marked(e.target.value);
     setMarkdownContent(html);
@@ -57,13 +55,10 @@ function AddArticle(props) {
         props.history.push("/");
       } else {
         setTypeInfo(res.data.data);
-        console.log(res.data.data);
       }
     });
   };
   const selectTypeHandler = value => {
-    console.log(value);
-
     setSelectType(value);
   };
   const saveArticle = () => {
@@ -93,7 +88,6 @@ function AddArticle(props) {
     dataProps.addTime = new Date(datetext).getTime() / 1000;
 
     if (articleId == 0) {
-      console.log("articleId=:" + articleId);
       dataProps.view_count = Math.ceil(Math.random() * 100) + 1000;
       axios({
         method: "post",
@@ -111,7 +105,6 @@ function AddArticle(props) {
         }
       });
     } else {
-      console.log("articleId:" + articleId);
       dataProps.id = articleId;
       axios({
         method: "post",
@@ -135,9 +128,9 @@ function AddArticle(props) {
         Authorization: `${token}`
       }
     }).then(res => {
-      //let articleInfo= res.data.data[0]
       setArticleTitle(res.data.data[0].title);
       setTypeName(res.data.data[0].typeName);
+
       setArticleContent(res.data.data[0].content);
       let html = marked(res.data.data[0].content);
       setMarkdownContent(html);
@@ -145,7 +138,6 @@ function AddArticle(props) {
       let tmpInt = marked(res.data.data[0].introduce);
       setIntroducehtml(tmpInt);
       setShowDate(res.data.data[0].addTime);
-      console.log(new Date(res.data.data[0].addTime));
 
       setSelectType(res.data.data[0].typeId);
     });
@@ -155,7 +147,6 @@ function AddArticle(props) {
     getTypeInfo();
 
     let tmpId = props.match.params.id;
-    console.log(tmpId);
     if (tmpId) {
       setArticleId(tmpId);
       getArticleById(tmpId);
@@ -179,10 +170,10 @@ function AddArticle(props) {
             <Col span={4}>
               &nbsp;
               <Select
-                defaultValue={"类别"}
+                defaultValue={typeName}
+                key={typeName}
                 size="large"
                 onChange={selectTypeHandler}
-                value={typeName}
               >
                 {typeInfo.map((item, index) => {
                   return (

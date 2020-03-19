@@ -5,7 +5,7 @@ import AdminIndex from "./AdminIndex";
 import ArticleList from "./ArticleList";
 function Main() {
   return (
-    <Router>
+    <Router basename='/admin'>
       <Route path="/" exact component={Login} />
       <Route path="/index/" exact component={AdminIndex} />
       {/* <Route path="/index/add/" exact component={AdminIndex} /> */}
