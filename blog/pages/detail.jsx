@@ -140,6 +140,7 @@ const Detail = props => {
 Detail.getInitialProps = async context => {
   // console.log("ffff" + context.query.id);
   let id = context.query.id;
+  // console.log(servicePath.getArticleById);
   const promise = new Promise(resolve => {
     axios(servicePath.getArticleById + "?id=" + id).then(res => {
       console.log(res.data.data[0]);

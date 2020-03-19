@@ -32,11 +32,11 @@ class NavbarPage extends Component {
                 <HomeOutlined />
                 首页
               </Menu.Item>
-              <Menu.Item key="article">
+              <Menu.Item key="article" onClick={() => Router.push("/article")}>
                 <FolderOutlined />
                 文章
               </Menu.Item>
-              <Menu.Item key="other">
+              <Menu.Item key="other" onClick={() => Router.push("/thought")}>
                 <SmileOutlined />
                 思绪
               </Menu.Item>

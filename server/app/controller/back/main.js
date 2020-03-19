@@ -67,6 +67,7 @@ class MainController extends Controller {
       "ORDER BY article.id DESC ";
 
     const resList = await this.app.mysql.query(sql);
+
     this.ctx.body = { list: resList };
   }
   async getArticleById() {

@@ -54,6 +54,7 @@ module.exports = appInfo => {
   config.adminauth = {
     secret: "egg-api-jwt"
   };
+  // config.middleware = ["adminauth"];
 
   return {
     ...config,

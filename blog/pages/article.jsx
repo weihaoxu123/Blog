@@ -42,7 +42,7 @@ const Home = list => {
                   <a href="/">首页</a>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <a href="/">Thought</a>
+                  <a href="/">文章</a>
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>
@@ -93,7 +93,7 @@ const Home = list => {
 };
 Home.getInitialProps = async () => {
   const promise = new Promise(resolve => {
-    axios(servicePath.getThoughtList).then(res => {
+    axios(servicePath.getArticleList).then(res => {
       resolve(res.data);
     });
   });
