@@ -27,7 +27,6 @@ function AddArticle(props) {
   const [introducemd, setIntroducemd] = useState(); //简介的markdown内容
   const [introducehtml, setIntroducehtml] = useState("等待编辑"); //简介的html内容
   const [showDate, setShowDate] = useState(); //发布日期
-  const [updateDate, setUpdateDate] = useState(); //修改日志的日期
   const [typeName, setTypeName] = useState();
   const [typeInfo, setTypeInfo] = useState([]); // 文章类别信息
   const [selectedType, setSelectType] = useState(1);
@@ -61,6 +60,16 @@ function AddArticle(props) {
   const selectTypeHandler = value => {
     setSelectType(value);
   };
+  const draftArticle = () => {
+    console.log(typeName);
+
+    localStorage.setItem("title", articleTitle);
+    localStorage.setItem("content", articleContent);
+    localStorage.setItem("introduce", introducemd);
+    localStorage.setItem("type", typeName);
+    localStorage.setItem("date", showDate);
+    localStorage.setItem("typeId", selectedType);
+  };
   const saveArticle = () => {
     if (!selectedType) {
       message.error("必须选择文章类别");
@@ -87,7 +96,7 @@ function AddArticle(props) {
     let datetext = showDate.replace("-", "/"); //把字符串转换成时间戳
     dataProps.addTime = new Date(datetext).getTime() / 1000;
 
-    if (articleId == 0) {
+    if (!props.match.params.id) {
       dataProps.view_count = Math.ceil(Math.random() * 100) + 1000;
       axios({
         method: "post",
@@ -99,8 +108,14 @@ function AddArticle(props) {
       }).then(res => {
         setArticleId(res.data.insertId);
         if (res.data.isScuccess) {
+          // localStorage.clear();
           message.success("文章发布成功");
         } else {
+          draftArticle();
+          console.log("save");
+
+          localStorage.setItem("draft", true);
+          props.history.push("/");
           message.error("文章保存失败");
         }
       });
@@ -115,8 +130,13 @@ function AddArticle(props) {
         data: dataProps
       }).then(res => {
         if (res.data.isScuccess) {
+          // localStorage.clear();
           message.success("文章保存成功");
         } else {
+          draftArticle();
+          localStorage.setItem("draft", true);
+          localStorage.setItem("id", articleId);
+          props.history.push("/");
           message.error("保存失败");
         }
       });
@@ -142,13 +162,27 @@ function AddArticle(props) {
       setSelectType(res.data.data[0].typeId);
     });
   };
-
+  const fillDraft = () => {
+    setArticleTitle(localStorage.getItem("title"));
+    setTypeName(localStorage.getItem("type"));
+    setArticleContent(localStorage.getItem("content"));
+    let html = marked(localStorage.getItem("content"));
+    setMarkdownContent(html);
+    setIntroducemd(localStorage.getItem("introduce"));
+    let tmpInt = marked(localStorage.getItem("introduce"));
+    setIntroducehtml(tmpInt);
+    setShowDate(localStorage.getItem("date"));
+    setSelectType(localStorage.getItem("typeId"));
+  };
   useEffect(() => {
     getTypeInfo();
-
     let tmpId = props.match.params.id;
-    if (tmpId) {
-      setArticleId(tmpId);
+    setArticleId(tmpId);
+    if (localStorage.getItem("draft") == "true") {
+      localStorage.setItem("draft", 0);
+      fillDraft();
+      localStorage.removeItem("id");
+    } else if (tmpId) {
       getArticleById(tmpId);
     }
   }, []);
@@ -209,7 +243,10 @@ function AddArticle(props) {
         <Col span={6}>
           <Row>
             <Col span={24}>
-              <Button size="large">暂存文章</Button>&nbsp;
+              <Button size="large" onClick={draftArticle}>
+                暂存文章
+              </Button>
+              &nbsp;
               <Button type="primary" size="large" onClick={saveArticle}>
                 发布文章
               </Button>
@@ -246,3 +283,4 @@ function AddArticle(props) {
   );
 }
 export default AddArticle;
+

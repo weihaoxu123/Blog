@@ -26,7 +26,7 @@ class MainController extends Controller {
         },
         this.config.adminauth.secret,
         {
-          expiresIn: 60 * 60
+          expiresIn: 60*60*2
         }
       );
       const data = { data: "登录成功", token: token };
@@ -44,6 +44,8 @@ class MainController extends Controller {
     this.ctx.body = { data: resType };
   }
   async addArticle() {
+    console.log("add");
+
     let tmpArticle = this.ctx.request.body;
     // tmpArticle.
     const result = await this.app.mysql.insert("article", tmpArticle);
