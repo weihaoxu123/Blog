@@ -28,17 +28,24 @@ const Home = (list) => {
           <div class="ButtonGroup">
             <Row>
               <Col span={8}>
-                <BulbOutlined style={{ fontSize: "3em" }} />
-                <a href="/resume">Resume</a>
+                <a href="/resume">
+                  {" "}
+                  <BulbOutlined />
+                  Resume
+                </a>
               </Col>
               <Col span={8}>
-                <EditOutlined style={{ fontSize: "3em" }} />
-
-                <a href="/article">Blog</a>
+                <a href="/article">
+                  <EditOutlined />
+                  Blog
+                </a>
               </Col>
               <Col span={8}>
-                <GithubOutlined style={{ fontSize: "3em" }} />
-                <a href="https://github.com/weihaoxu123">Github</a>
+                <a href="https://github.com/weihaoxu123">
+                  {" "}
+                  <GithubOutlined />
+                  Github
+                </a>
               </Col>
             </Row>
           </div>
