@@ -15,12 +15,12 @@ class MyInfo extends Component {
           </div>
           <div className="author-introcution">
             Random Words
-            <Divider>如何联系</Divider>
+            <Divider>How to contact</Divider>
           </div>
         </div>
-        <div className="tag">
-          <div className="title">标签</div>
-        </div>
+        {/* <div className="tag">
+          <div className="title">tag</div>
+        </div> */}
       </div>
     );
   }

@@ -1,0 +1,19 @@
+@import url("https://fonts.font.im/css?family=Ranga");
+.App {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+#__next {
+  height: 100%;
+}
+.text {
+  margin-top: 5px;
+}
+.ButtonGroup {
+  margin-top: 10px;
+}
+.ButtonGroup a {
+  font-size: 1.4em;
+}

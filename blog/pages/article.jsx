@@ -12,7 +12,7 @@ import servicePath from "../config/apiURL";
 import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
-const Home = list => {
+const Home = (list) => {
   const renderer = new marked.Renderer();
   marked.setOptions({
     renderer: renderer,
@@ -25,9 +25,9 @@ const Home = list => {
     smartypants: false,
     sanitize: false,
     xhtml: false,
-    highlight: function(code) {
+    highlight: function (code) {
       return hljs.highlightAuto(code).value;
-    }
+    },
   });
   const [mylist, setMylist] = useState(list.data);
   return (
@@ -39,18 +39,17 @@ const Home = list => {
             <div className="bread-div">
               <Breadcrumb>
                 <Breadcrumb.Item>
-                  <a href="/">首页</a>
+                  <a href="/">Home</a>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <a href="/">文章</a>
+                  <a href="/">Coding</a>
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <List
-              // header={<div>日志</div>}
               itemLayout="vertical"
               dataSource={mylist}
-              renderItem={item => (
+              renderItem={(item) => (
                 <List.Item>
                   <div className="list-title">
                     <Link
@@ -63,13 +62,11 @@ const Home = list => {
                     <span>
                       <CalendarOutlined /> {item.addTime}
                     </span>
+
                     <span>
-                      <CalendarOutlined />
-                      {item.typeName}
-                    </span>
-                    <span>
+                      &nbsp; &nbsp;
                       <FireOutlined />
-                      {item.view_count}人
+                      {item.view_count}view
                     </span>
                   </div>
                   <div
@@ -92,8 +89,8 @@ const Home = list => {
   );
 };
 Home.getInitialProps = async () => {
-  const promise = new Promise(resolve => {
-    axios(servicePath.getArticleList).then(res => {
+  const promise = new Promise((resolve) => {
+    axios(servicePath.getArticleList).then((res) => {
       resolve(res.data);
     });
   });

@@ -5,14 +5,14 @@ import {
   HomeOutlined,
   TrophyOutlined,
   SmileOutlined,
-  FolderOutlined
+  FolderOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import "./style.css";
 
 class NavbarPage extends Component {
   render() {
-    const handleClick = e => {
+    const handleClick = (e) => {
       if (e.key == "home") {
         Router.push("/");
       } else if (e.key == "other") {
@@ -22,27 +22,27 @@ class NavbarPage extends Component {
     return (
       <div className="header">
         <Row type="flex" justify="center">
-          <Col xs={24} sm={24} md={16} lg={10} xl={8}>
-            <span className="header-logo">炜皓的博客</span>
-            <span className="header-text">名言</span>
+          <Col xs={20} sm={20} md={16} lg={10} xl={8}>
+            <span className="header-logo">Weihao's Blog</span>
+            <span className="header-text"></span>
           </Col>
-          <Col className="Menu" xs={0} sm={0} md={7} lg={10} xl={10}>
+          <Col className="Menu" xs={4} sm={4} md={7} lg={10} xl={10}>
             <Menu mode="horizontal" onClick={handleClick}>
               <Menu.Item key="home">
                 <HomeOutlined />
-                首页
+                Home
               </Menu.Item>
               <Menu.Item key="article" onClick={() => Router.push("/article")}>
                 <FolderOutlined />
-                文章
+                Coding
               </Menu.Item>
               <Menu.Item key="other" onClick={() => Router.push("/thought")}>
                 <SmileOutlined />
-                思绪
+                Thought
               </Menu.Item>
               <Menu.Item key="Easter-egg">
                 <TrophyOutlined />
-                彩蛋
+                Extra
               </Menu.Item>
             </Menu>
           </Col>
