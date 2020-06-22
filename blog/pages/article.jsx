@@ -42,7 +42,7 @@ const Home = (list) => {
                   <a href="/">Home</a>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <a href="/">Coding</a>
+                  <a href="/">Tech</a>
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>

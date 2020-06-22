@@ -4,13 +4,14 @@ import { Row, Col, Menu, Dropdown } from "antd";
 import {
   HomeOutlined,
   TrophyOutlined,
-  SmileOutlined,
+  GithubOutlined,
   FolderOutlined,
   MenuOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
-import "./style.css";
-import "../index/cover.css";
+import "./../header/style.css";
+import "./cover.css";
 
 class NavbarPage extends Component {
   render() {
@@ -20,13 +21,13 @@ class NavbarPage extends Component {
           Home
         </Menu.Item>
         <Menu.Item key="2" onClick={() => Router.push("/article")}>
-          Tech
+          Blog
         </Menu.Item>
         <Menu.Item key="3" onClick={() => Router.push("/thought")}>
-          Mood
+          Resume
         </Menu.Item>
         <Menu.Item key="3" onClick={() => Router.push("/article")}>
-          Extra
+          Github
         </Menu.Item>
       </Menu>
     );
@@ -41,17 +42,9 @@ class NavbarPage extends Component {
       <div className="header">
         <Row type="flex" justify="center">
           <Col xs={20} sm={20} md={16} lg={10} xl={8}>
-            <span className="logoText">Weihao's Blog</span>
+            <span className="logoText">Weihao Xu-徐炜皓</span>
           </Col>
-          <Col
-            className="Menu"
-            xs={0}
-            sm={0}
-            md={7}
-            lg={10}
-            xl={10}
-            style={{ paddingRight: "38px" }}
-          >
+          <Col className="Menu" xs={0} sm={0} md={7} lg={10} xl={10}>
             <Menu mode="horizontal" onClick={handleClick}>
               <Menu.Item key="home">
                 <span class="headerText">
@@ -62,19 +55,19 @@ class NavbarPage extends Component {
               <Menu.Item key="article" onClick={() => Router.push("/article")}>
                 <span class="headerText">
                   <FolderOutlined style={{ fontSize: "25px" }} />
-                  Tech
+                  Blog
                 </span>
               </Menu.Item>
               <Menu.Item key="other" onClick={() => Router.push("/thought")}>
                 <span class="headerText">
-                  <SmileOutlined style={{ fontSize: "25px" }} />
-                  Mood
+                  <EditOutlined style={{ fontSize: "25px" }} />
+                  Resume
                 </span>
               </Menu.Item>
               <Menu.Item key="Easter-egg">
                 <span class="headerText">
-                  <TrophyOutlined style={{ fontSize: "25px" }} />
-                  Extra
+                  <GithubOutlined style={{ fontSize: "25px" }} />
+                  Github
                 </span>
               </Menu.Item>
             </Menu>

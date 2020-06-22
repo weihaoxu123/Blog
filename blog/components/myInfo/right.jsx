@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { Avatar, Divider } from "antd";
+import {
+  MailOutlined,
+  PhoneOutlined,
+  HomeOutlined,
+  LinkedinOutlined,
+} from "@ant-design/icons";
 import "./style.css";
 class MyInfo extends Component {
   state = {};
@@ -16,6 +22,22 @@ class MyInfo extends Component {
           <div className="author-introcution">
             Random Words
             <Divider>How to contact</Divider>
+            <div>
+              <HomeOutlined /> 501 S New Hampshire Ave, Los Angeles, CA, US,
+              90020
+            </div>
+            <div>
+              <MailOutlined /> weihaoxu@usc.edu
+            </div>
+            <div>
+              <LinkedinOutlined />
+              <a href="https://www.linkedin.com/in/weihao-xu-ba3768194/">
+                LinkedIn Click Here
+              </a>
+            </div>
+            <div>
+              <PhoneOutlined /> 213-536-3424
+            </div>
           </div>
         </div>
         {/* <div className="tag">
