@@ -26,18 +26,21 @@ const Home = (list) => {
       }}
     >
       <Header />
-      <div class="intro">
-        <div style={{ fontSize: "3vw", color: "white" }}>Weihao</div>
-        <span style={{ fontSize: "4vw", color: "white" }}>
-          Software Engineer
-        </span>
-        <div style={{ fontSize: "4vw", color: "white" }}>
-          BackEnd | Full-Stack
+
+      <Row>
+        <div class="intro">
+          <div style={{ fontSize: "3vw", color: "white" }}>Weihao</div>
+          <span style={{ fontSize: "4vw", color: "white" }}>
+            Software Engineer
+          </span>
+          <div style={{ fontSize: "4vw", color: "white" }}>
+            BackEnd | Full-Stack
+          </div>
+          <div style={{ fontSize: "4.5vw", color: "white" }}>
+            Everyone has to start somewhere....
+          </div>
         </div>
-        <div style={{ fontSize: "4.5vw", color: "white" }}>
-          Everyone has to start somewhere....
-        </div>
-      </div>
+      </Row>
     </div>
   );
 };

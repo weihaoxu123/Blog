@@ -78,7 +78,7 @@ class NavbarPage extends Component {
             lg={0}
             md={0}
             xl={0}
-            style={{ paddingTop: "10px", paddingLeft: "22px" }}
+            style={{ paddingTop: "10px", paddingLeft: "10px" }}
           >
             <Dropdown overlay={menu} trigger={["click"]}>
               <a
