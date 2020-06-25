@@ -22,7 +22,7 @@ const Home = (list) => {
     <div
       className="App"
       style={{
-        backgroundImage: `url(${"../static/style/007.jpg"})`,
+        backgroundImage: `url(${"../static/style/007.jpeg"})`,
       }}
     >
       <Header />

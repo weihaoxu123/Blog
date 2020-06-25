@@ -96,7 +96,6 @@ class NavbarPage extends Component {
                 <MenuOutlined />
               </a>
             </Dropdown>
-            ,
           </Col>
         </Row>
       </div>
