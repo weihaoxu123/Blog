@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { CalendarOutlined, FireOutlined } from "@ant-design/icons";
 import { Row, Col, Breadcrumb, List, Icon } from "antd";
 import Header from "../components/header/header";
-import MyInfo from "../components/myInfo/right";
-import Footer from "../components/footer/footer";
+import MusicPlayer from "../components/musicPlayer/musicPlayer";
 import axios from "axios";
 import Link from "next/link";
 import "../static/style/pages/article.css";
@@ -34,7 +33,7 @@ const Home = (list) => {
     <div>
       <Header />
       <Row className="main-page" type="flex" justify="center">
-        <Col className="main-page-left" xs={24} sm={24} md={16} lg={18} xl={14}>
+        <Col className="main-page-left" xs={24} sm={24} md={16} lg={15} xl={13}>
           <div>
             <div className="bread-div">
               <Breadcrumb>
@@ -47,7 +46,6 @@ const Home = (list) => {
               </Breadcrumb>
             </div>
             <List
-              // header={<div>日志</div>}
               itemLayout="vertical"
               dataSource={mylist}
               renderItem={(item) => (
@@ -80,11 +78,10 @@ const Home = (list) => {
             />
           </div>
         </Col>
-        <Col className="main-page-right" xs={0} sm={0} md={7} lg={5} xl={4}>
-          <MyInfo />
+        <Col className="main-page-right" xs={0} sm={0} md={7} lg={5} xl={5}>
+          <MusicPlayer />
         </Col>
       </Row>
-      <Footer />
     </div>
   );
 };

@@ -43,15 +43,7 @@ class NavbarPage extends Component {
           <Col xs={20} sm={20} md={16} lg={10} xl={8}>
             <span className="logoText">Weihao's Blog</span>
           </Col>
-          <Col
-            className="Menu"
-            xs={0}
-            sm={0}
-            md={7}
-            lg={10}
-            xl={10}
-            style={{ paddingRight: "38px" }}
-          >
+          <Col className="Menu" xs={0} sm={0} md={7} lg={10} xl={10}>
             <Menu mode="horizontal" onClick={handleClick}>
               <Menu.Item key="home">
                 <span class="headerText">

@@ -3,7 +3,6 @@ import { CalendarOutlined, FireOutlined } from "@ant-design/icons";
 import { Row, Col, Breadcrumb, List, Icon } from "antd";
 import Header from "../components/header/header";
 import MyInfo from "../components/myInfo/right";
-import Footer from "../components/footer/footer";
 import axios from "axios";
 import Link from "next/link";
 import "../static/style/pages/article.css";
@@ -84,7 +83,6 @@ const Home = (list) => {
           <MyInfo />
         </Col>
       </Row>
-      <Footer />
     </div>
   );
 };
